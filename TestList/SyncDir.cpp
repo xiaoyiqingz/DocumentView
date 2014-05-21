@@ -26,6 +26,7 @@ void CSyncDir::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CSyncDir, CFormView)
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
@@ -47,3 +48,24 @@ void CSyncDir::Dump(CDumpContext& dc) const
 
 
 // CSyncDir message handlers
+
+
+
+HBRUSH CSyncDir::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CFormView::OnCtlColor(pDC, pWnd, nCtlColor);
+
+//	pDC->SetBkMode(TRANSPARENT);
+	
+
+	if (nCtlColor == CTLCOLOR_DLG)
+	{
+		pDC->SetBkMode(TRANSPARENT);
+		HBRUSH br =(HBRUSH)CreateSolidBrush(RGB(0, 255, 0)); 
+		return (HBRUSH) br ; 
+
+	} else {
+		return CFormView::OnCtlColor(pDC, pWnd, nCtlColor);
+	}
+	
+}

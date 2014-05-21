@@ -13,6 +13,7 @@
 //
 
 #pragma once
+#include "TestListDoc.h"
 #define WM_MY_USERMESSAGE (WM_USER+30)
 
 class CTestListView : public CListView

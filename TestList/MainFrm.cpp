@@ -16,6 +16,7 @@
 #include "TestList.h"
 #include "SyncDir.h"
 #include "MainFrm.h"
+#include "TestListView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -342,9 +343,9 @@ void CMainFrame::SwitchToForm(int nForm)
 		case IDD_SYNCDIR :
 			pNewActiveView=(CView*)new CSyncDir;
 			break;
-// 		case 2:
-// 			pNewActiveView=(CView*)new CTestListView;
-// 			break;
+ 		case 2:
+ 			pNewActiveView=(CView*)new CTestListView;
+ 			break;
 		}
 		CCreateContext context;   
 		context.m_pCurrentDoc=pOldActiveView->GetDocument();
@@ -360,11 +361,16 @@ void CMainFrame::SwitchToForm(int nForm)
 
 	if(pOldActiveView->GetRuntimeClass() ==RUNTIME_CLASS(CSyncDir))
 		pOldActiveView->SetDlgCtrlID(IDD_SYNCDIR);
-// 	else(pOldActiveView->GetRuntimeClass() == RUNTIME_CLASS(CTestListView))
-// 		pOldActiveView->SetDlgCtrlID(2);
+	else if(pOldActiveView->GetRuntimeClass() == RUNTIME_CLASS(CTestListView))
+ 		pOldActiveView->SetDlgCtrlID(2);
+
+	//视图是主框架窗口的一个ID为AFX_IDW_PANE_FIRST，带有边框的子窗口，
+	//这个主框架窗口是由CFrameWnd类封装并创建的。
+	// 将活动视的child id设置为AFX_IDW_PANE_FIRST
+	// 将其它视设置为AFX_IDW_PANE_FIRST以外的值，
+	// 这样当调用 CFrameWnd::RecalcLayout重新布局窗口时，
+	// 才会得到正确的视图
 	pNewActiveView->SetDlgCtrlID(AFX_IDW_PANE_FIRST);
-
-
 
 	delete pOldActiveView;   
 
@@ -374,5 +380,5 @@ void CMainFrame::SwitchToForm(int nForm)
 void CMainFrame::OnButton2()
 {
 	// TODO: Add your command handler code here
-//	SwitchToForm(2);
+	SwitchToForm(2);
 }

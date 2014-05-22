@@ -1,7 +1,6 @@
 #pragma once
 
 
-
 // CSyncDir form view
 
 class CSyncDir : public CFormView
@@ -27,6 +26,9 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnClickedButton1();
+	CString m_edit1;
+	CImage  m_bkImage;
 };
 
 

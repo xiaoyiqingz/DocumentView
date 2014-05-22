@@ -126,6 +126,9 @@
     <ClInclude Include="SyncDir.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="MyButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestList.cpp">
@@ -147,6 +150,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SyncDir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

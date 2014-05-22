@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CalendarBar.h" />
+    <ClInclude Include="Dir.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MyButton.h" />
     <ClInclude Include="Resource.h" />
@@ -134,9 +135,11 @@
     <ClInclude Include="TestList.h" />
     <ClInclude Include="TestListDoc.h" />
     <ClInclude Include="TestListView.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalendarBar.cpp" />
+    <ClCompile Include="Dir.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MyButton.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -147,6 +150,7 @@
     <ClCompile Include="TestList.cpp" />
     <ClCompile Include="TestListDoc.cpp" />
     <ClCompile Include="TestListView.cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TestList.rc" />

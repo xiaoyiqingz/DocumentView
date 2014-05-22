@@ -207,9 +207,9 @@ protected:
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
-//	afx_msg void OnPaint();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg void OnSizing(UINT fwSide, LPRECT pRect);
+//	virtual BOOL OnInitDialog();
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
@@ -254,17 +254,6 @@ void CTestListApp::SaveCustomState()
 }
 
 // CTestListApp message handlers
-
-
-
-
-
-//void CAboutDlg::OnPaint()
-//{
-//	CPaintDC dc(this); // device context for painting
-//	// TODO: Add your message handler code here
-//	// Do not call CDialogEx::OnPaint() for painting messages
-//}
 
 
 void CAboutDlg::OnSize(UINT nType, int cx, int cy)

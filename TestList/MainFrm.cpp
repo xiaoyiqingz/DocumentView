@@ -17,6 +17,7 @@
 #include "SyncDir.h"
 #include "MainFrm.h"
 #include "TestListView.h"
+#include "Dir.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -123,7 +124,7 @@ BOOL CMainFrame::CreateOutlookBar(CMFCOutlookBar& bar, UINT uiID, CMFCShellTreeC
 	CString strTemp;
 	bNameValid = strTemp.LoadString(IDS_SHORTCUTS);
 	ASSERT(bNameValid);
-	if (!bar.Create(strTemp, this, CRect(0, 0, nInitialWidth, 32000), uiID, WS_CHILD | WS_VISIBLE | CBRS_LEFT))
+	if (!bar.Create(strTemp, this, CRect(0, 0, nInitialWidth, 32000), uiID, WS_CHILD | WS_VISIBLE | CBRS_TOP))
 	{
 		return FALSE; // fail to create
 	}
@@ -327,7 +328,7 @@ void CMainFrame::OnOptions()
 void CMainFrame::OnButton3()
 {
 	// TODO: Add your command handler code here
-	SwitchToForm(IDD_SYNCDIR);
+	SwitchToForm(3);
 }
 
 
@@ -346,6 +347,8 @@ void CMainFrame::SwitchToForm(int nForm)
  		case 2:
  			pNewActiveView=(CView*)new CTestListView;
  			break;
+		case 3:
+			pNewActiveView=(CView*)new CDir;
 		}
 		CCreateContext context;   
 		context.m_pCurrentDoc=pOldActiveView->GetDocument();
@@ -363,6 +366,8 @@ void CMainFrame::SwitchToForm(int nForm)
 		pOldActiveView->SetDlgCtrlID(IDD_SYNCDIR);
 	else if(pOldActiveView->GetRuntimeClass() == RUNTIME_CLASS(CTestListView))
  		pOldActiveView->SetDlgCtrlID(2);
+	else if(pOldActiveView->GetRuntimeClass() == RUNTIME_CLASS(CDir))
+		pOldActiveView->SetDlgCtrlID(3);
 
 	//视图是主框架窗口的一个ID为AFX_IDW_PANE_FIRST，带有边框的子窗口，
 	//这个主框架窗口是由CFrameWnd类封装并创建的。

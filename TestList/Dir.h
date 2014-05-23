@@ -26,8 +26,10 @@ public:
 
 	CImageList m_ImageList;
 	CMyImageList m_myImageList;
+
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	afx_msg void OnTvnSelchanged(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 
 

@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DVMTest", "DVMTest\DVMTest.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestList", "TestList\TestList.vcxproj", "{05F1BD97-256B-4BF8-BDB3-E7846DEE1956}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CTreeView", "CTreeView\CTreeView.vcxproj", "{7C7553AA-5D2E-4948-875E-0F8F3035A594}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{05F1BD97-256B-4BF8-BDB3-E7846DEE1956}.Debug|Win32.Build.0 = Debug|Win32
 		{05F1BD97-256B-4BF8-BDB3-E7846DEE1956}.Release|Win32.ActiveCfg = Release|Win32
 		{05F1BD97-256B-4BF8-BDB3-E7846DEE1956}.Release|Win32.Build.0 = Release|Win32
+		{7C7553AA-5D2E-4948-875E-0F8F3035A594}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C7553AA-5D2E-4948-875E-0F8F3035A594}.Debug|Win32.Build.0 = Debug|Win32
+		{7C7553AA-5D2E-4948-875E-0F8F3035A594}.Release|Win32.ActiveCfg = Release|Win32
+		{7C7553AA-5D2E-4948-875E-0F8F3035A594}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -56,7 +56,6 @@ protected:  // control bar embedded members
 	CMFCShellTreeCtrl m_wndTree;
 	CCalendarBar      m_wndCalendar;
 	CMFCCaptionBar    m_wndCaptionBar;
-	CButton			  m_btHeader;
 
 // Generated message map functions
 protected:
@@ -70,18 +69,12 @@ protected:
 
 	BOOL CreateOutlookBar(CMFCOutlookBar& bar, UINT uiID, CMFCShellTreeCtrl& tree, CCalendarBar& calendar, int nInitialWidth);
 	BOOL CreateCaptionBar();
-	BOOL CreateHeaderBar();
 
 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
 
 	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
 	CMFCOutlookBarTabCtrl* m_pCurrOutlookWnd;
 	CMFCOutlookBarPane*    m_pCurrOutlookPage;
-public:
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnButton3();
-	void  SwitchToForm(int nForm);
-	afx_msg void OnButton2();
 };
 
 

@@ -13,11 +13,9 @@
 //
 
 #include "stdafx.h"
-#include "TestList.h"
-#include "SyncDir.h"
+#include "CTreeView.h"
+
 #include "MainFrm.h"
-#include "TestListView.h"
-#include "Dir.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,8 +32,6 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_VIEW_CAPTION_BAR, &CMainFrame::OnViewCaptionBar)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_CAPTION_BAR, &CMainFrame::OnUpdateViewCaptionBar)
 	ON_COMMAND(ID_TOOLS_OPTIONS, &CMainFrame::OnOptions)
-	ON_COMMAND(ID_BUTTON3, &CMainFrame::OnButton3)
-	ON_COMMAND(ID_BUTTON2, &CMainFrame::OnButton2)
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -59,10 +55,10 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// set the visual manager and style based on persisted value
 	OnApplicationLook(theApp.m_nAppLook);
 
-	m_wndRibbonBar.Create(this);   //ribbon  bar
+	m_wndRibbonBar.Create(this);
 	m_wndRibbonBar.LoadFromResource(IDR_RIBBON);
 
-	if (!m_wndStatusBar.Create(this))      //status   bar
+	if (!m_wndStatusBar.Create(this))
 	{
 		TRACE0("Failed to create status bar\n");
 		return -1;      // fail to create
@@ -86,13 +82,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	EnableDocking(CBRS_ALIGN_TOP | CBRS_ALIGN_BOTTOM | CBRS_ALIGN_RIGHT);
 
 	// Create and setup "Outlook" navigation bar:
-	if (!CreateOutlookBar(m_wndNavigationBar, ID_VIEW_NAVIGATION, m_wndTree, m_wndCalendar, 250))    //outlook  bar
+	if (!CreateOutlookBar(m_wndNavigationBar, ID_VIEW_NAVIGATION, m_wndTree, m_wndCalendar, 250))
 	{
 		TRACE0("Failed to create navigation pane\n");
 		return -1;      // fail to create
 	}
 
-	// Create a caption bar: 
+	// Create a caption bar:
 	if (!CreateCaptionBar())
 	{
 		TRACE0("Failed to create caption bar\n");
@@ -102,7 +98,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// Outlook bar is created and docking on the left side should be allowed.
 	EnableDocking(CBRS_ALIGN_LEFT);
 	EnableAutoHidePanes(CBRS_ALIGN_RIGHT);
-
 
 	return 0;
 }
@@ -170,11 +165,6 @@ BOOL CMainFrame::CreateOutlookBar(CMFCOutlookBar& bar, UINT uiID, CMFCShellTreeC
 	bar.SetButtonsFont(&afxGlobalData.fontBold);
 
 	return TRUE;
-}
-
-BOOL CMainFrame::CreateHeaderBar()
-{
-	return FALSE;
 }
 
 BOOL CMainFrame::CreateCaptionBar()
@@ -327,69 +317,4 @@ void CMainFrame::OnOptions()
 
 	pOptionsDlg->DoModal();
 	delete pOptionsDlg;
-}
-
-
-
-void CMainFrame::OnButton3()
-{
-	// TODO: Add your command handler code here
-	SwitchToForm(3);
-}
-
-
-void CMainFrame::SwitchToForm(int nForm)
-{
-	//CDocument* pDoc = GetActiveDocument();
-	CView *pOldActiveView=GetActiveView();             
-	CView *pNewActiveView=(CView*)GetDlgItem(nForm);   
-	if(pNewActiveView==NULL)
-	{
-		switch(nForm)
-		{
-		case IDD_SYNCDIR :
-			pNewActiveView=(CView*)new CSyncDir;
-			break;
- 		case 2:
- 			pNewActiveView=(CView*)new CTestListView;
- 			break;
-		case 3:
-			pNewActiveView=(CView*)new CDir;
-		}
-		CCreateContext context;   
-		context.m_pCurrentDoc=pOldActiveView->GetDocument();
-		pNewActiveView->Create(NULL, NULL, WS_BORDER|WS_CHILD,
-			CFrameWnd::rectDefault, this, nForm, &context);
-
-
-		pNewActiveView->OnInitialUpdate();
-	}
-	SetActiveView(pNewActiveView);        
-	pNewActiveView->ShowWindow(SW_SHOW);  
-	pOldActiveView->ShowWindow(SW_HIDE);  
-
-	if(pOldActiveView->GetRuntimeClass() ==RUNTIME_CLASS(CSyncDir))
-		pOldActiveView->SetDlgCtrlID(IDD_SYNCDIR);
-	else if(pOldActiveView->GetRuntimeClass() == RUNTIME_CLASS(CTestListView))
- 		pOldActiveView->SetDlgCtrlID(2);
-	else if(pOldActiveView->GetRuntimeClass() == RUNTIME_CLASS(CDir))
-		pOldActiveView->SetDlgCtrlID(3);
-
-	//视图是主框架窗口的一个ID为AFX_IDW_PANE_FIRST，带有边框的子窗口，
-	//这个主框架窗口是由CFrameWnd类封装并创建的。
-	// 将活动视的child id设置为AFX_IDW_PANE_FIRST
-	// 将其它视设置为AFX_IDW_PANE_FIRST以外的值，
-	// 这样当调用 CFrameWnd::RecalcLayout重新布局窗口时，
-	// 才会得到正确的视图
-	pNewActiveView->SetDlgCtrlID(AFX_IDW_PANE_FIRST);
-
-	delete pOldActiveView;   
-
-	RecalcLayout();          
-}
-
-void CMainFrame::OnButton2()
-{
-	// TODO: Add your command handler code here
-	SwitchToForm(2);
 }

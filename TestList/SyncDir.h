@@ -29,6 +29,7 @@ public:
 	afx_msg void OnClickedButton1();
 	CString m_edit1;
 	CImage  m_bkImage;
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 
 

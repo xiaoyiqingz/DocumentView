@@ -21,6 +21,7 @@ CDir::~CDir()
 
 BEGIN_MESSAGE_MAP(CDir, CTreeView)
 	ON_NOTIFY_REFLECT(TVN_SELCHANGED, &CDir::OnTvnSelchanged)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -138,4 +139,21 @@ void CDir::OnTvnSelchanged(NMHDR *pNMHDR, LRESULT *pResult)
 	str.ReleaseBuffer();*/
 
 	*pResult = 0;
+}
+
+
+BOOL CDir::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO: Add your message handler code here and/or call default
+/*   ±³¾°É«½¥±ä
+	CRect rc; 
+	GetClientRect(&rc); 
+	for(int i=1;i<=rc.Height();i++)
+	{ 
+		float a=(float)(255.0/(float)rc.Height())*i; 
+		pDC->FillSolidRect(0,i-1,rc.Width(),i,RGB(255-a,255-a,255)); 
+	}
+	return TRUE;
+*/	
+	return CTreeView::OnEraseBkgnd(pDC);
 }

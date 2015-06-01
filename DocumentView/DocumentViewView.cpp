@@ -189,6 +189,8 @@ BOOL CDocumentViewView::CreateDeviceList()
 	for (int i = 0; i < 100; i++) {
 		m_ListCtrlDevice.InsertItem(i, _T("name"), i % 3);
 		m_ListCtrlDevice.SetItemText(i , 1, _T("path"));
+
+
 	}
 	m_ListCtrlDevice.SetColumnWidth(0, LVSCW_AUTOSIZE);
 	m_ListCtrlDevice.SetColumnWidth(1, LVSCW_AUTOSIZE_USEHEADER);
